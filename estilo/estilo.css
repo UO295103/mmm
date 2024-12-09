@@ -149,9 +149,4 @@ svg {
         reducir el tamaño de la tabla en moviles*/
     }
 
-    ol, ul {
-        /*Reducción para ajustar en telefonos una mejor
-        visualización*/
-        font-size: 1.3rem;
-    }
 }
