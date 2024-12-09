@@ -40,6 +40,7 @@ class Pais {
 
     showTitle(){  
         // Titulo
+        document.write("<section>");
         document.write("<h2> Información acerca de ");
         document.write(this.getNombre());
         document.write("</h2>");
@@ -52,11 +53,14 @@ class Pais {
         "el circuito principal de esta página web. Este país tiene por capital ");
         document.write(this.getCapital()); 
         document.write("</p>");
+        document.write("</section>");
     }
 
     showExtraData(){
+        document.write("<section>");
         document.write("<h2>Datos extra del país</h2>");
-        document.write(this.getInformacionSecundaria()); // Usar this en lugar de pais
+        document.write(this.getInformacionSecundaria());
+        document.write("</section>");
     }
 
     consultarMeteorologia() {
