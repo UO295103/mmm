@@ -4,7 +4,12 @@ body {
   width: 95%;
   display: flex;
   flex-wrap: wrap;
-  word-wrap: break-word;
+}
+
+/* (Especificidad: 0,0,1) */
+h1 {
+  margin: 2%;
+  width: 25%;
 }
 
 /* (Especificidad: 0,0,1) */
@@ -240,6 +245,12 @@ svg {
     width: 90%;        
     /*Redefinición de width para que no se
     vea muy pequeño en telefonos*/
+  }
+
+  /* (Especificidad: 0,0,1) */
+  h1 {
+    width: 100%;
+    /*Redefinición para adaptar la navegación a telefonos*/
   }
 
 }
