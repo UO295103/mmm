@@ -154,67 +154,70 @@ dibujarCarrera(resultado) {
         }
     });
 }
-    mostrarGrafico() {
-        const resultadosPrevios = JSON.parse(localStorage.getItem('resultados')) || [];
 
-        if (resultadosPrevios.length === 0) {
-            alert("No hay datos disponibles para mostrar en el gráfico.");
-            return;
-        }
+mostrarGrafico() {
+    const resultadosPrevios = JSON.parse(localStorage.getItem('resultados')) || [];
 
-        const victorias = {};
-        resultadosPrevios.forEach(nombreGanador => {
-            victorias[nombreGanador] = (victorias[nombreGanador] || 0) + 1;
-        });
-
-        const pilotos = Object.keys(victorias);
-        const numeroDeVictorias = Object.values(victorias);
-        const maxVictorias = Math.max(...numeroDeVictorias);
-
-        this.svg.innerHTML = '';
-        const svgWidth = 600;
-        const svgHeight = 400;
-        const barWidth = 40;
-        const padding = 60;
-        const labelColor = '#000';
-        const colors = ['#ff5733', '#33ff57', '#3357ff', '#f4c542', '#f542c2', '#42f5a7', '#8e44ad', '#e74c3c'];
-
-        this.svg.setAttribute("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
-        this.svg.setAttribute("width", svgWidth);
-        this.svg.setAttribute("height", svgHeight);
-
-        pilotos.forEach((piloto, index) => {
-            const barHeight = (numeroDeVictorias[index] / maxVictorias) * (svgHeight - 50);
-            const x = index * (barWidth + padding);
-            const y = svgHeight - barHeight - 20;
-
-            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-            rect.setAttribute("x", x);
-            rect.setAttribute("y", y);
-            rect.setAttribute("width", barWidth);
-            rect.setAttribute("height", barHeight);
-            rect.setAttribute("fill", colors[index % colors.length]);
-            this.svg.appendChild(rect);
-
-            const segundoNombre = piloto.split(" ")[1];
-
-            const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            text.setAttribute("x", x + barWidth / 2);
-            text.setAttribute("y", svgHeight - 5);
-            text.setAttribute("text-anchor", "middle");
-            text.setAttribute("fill", labelColor);
-            text.textContent = segundoNombre;
-            this.svg.appendChild(text);
-
-            const valueText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            valueText.setAttribute("x", x + barWidth / 2);
-            valueText.setAttribute("y", y - 5);
-            valueText.setAttribute("text-anchor", "middle");
-            valueText.setAttribute("fill", labelColor);
-            valueText.textContent = numeroDeVictorias[index];
-            this.svg.appendChild(valueText);
-        });
+    if (resultadosPrevios.length === 0) {
+        alert("No hay datos disponibles para mostrar en el gráfico.");
+        return;
     }
+
+    const victorias = {};
+    resultadosPrevios.forEach(nombreGanador => {
+        victorias[nombreGanador] = (victorias[nombreGanador] || 0) + 1;
+    });
+
+    const pilotos = Object.keys(victorias);
+    const numeroDeVictorias = Object.values(victorias);
+    const maxVictorias = Math.max(...numeroDeVictorias);
+
+    this.svg.innerHTML = '';
+    const svgWidth = 600;
+    const svgHeight = 400;
+    const barWidth = 40;
+    const padding = 60;
+    const marginLeft = 50; // Margen inicial para separar la primera barra del borde izquierdo
+    const labelColor = '#000';
+    const colors = ['#ff5733', '#33ff57', '#3357ff', '#f4c542', '#f542c2', '#42f5a7', '#8e44ad', '#e74c3c'];
+
+    this.svg.setAttribute("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
+    this.svg.setAttribute("width", svgWidth);
+    this.svg.setAttribute("height", svgHeight);
+
+    pilotos.forEach((piloto, index) => {
+        const barHeight = (numeroDeVictorias[index] / maxVictorias) * (svgHeight - 50);
+        const x = marginLeft + index * (barWidth + padding);
+        const y = svgHeight - barHeight - 20;
+
+        const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect.setAttribute("x", x);
+        rect.setAttribute("y", y);
+        rect.setAttribute("width", barWidth);
+        rect.setAttribute("height", barHeight);
+        rect.setAttribute("fill", colors[index % colors.length]);
+        this.svg.appendChild(rect);
+
+        const segundoNombre = piloto.split(" ")[1];
+
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("x", x + barWidth / 2);
+        text.setAttribute("y", svgHeight - 5);
+        text.setAttribute("text-anchor", "middle");
+        text.setAttribute("fill", labelColor);
+        text.textContent = segundoNombre;
+        this.svg.appendChild(text);
+
+        const valueText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        valueText.setAttribute("x", x + barWidth / 2);
+        valueText.setAttribute("y", y - 5);
+        valueText.setAttribute("text-anchor", "middle");
+        valueText.setAttribute("fill", labelColor);
+        valueText.textContent = numeroDeVictorias[index];
+        this.svg.appendChild(valueText);
+    });
+}
+
 
     limpiarDatosAlmacenados() {
         localStorage.removeItem('resultados');
