@@ -1,7 +1,7 @@
 /* (Especificidad: 0,0,1) */
 body {
     margin: 2%;
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-wrap: wrap;
     font-family: "Arial", sans-serif;
@@ -31,6 +31,11 @@ h3 {
 /* (Especificidad: 0,0,1) */
 header {
     background-color: #ffffff; /* Hereda el color del body */
+}
+
+/* (Especificidad: 0,0,1) */
+header {
+    width: 100%;
 }
 
 /* (Especificidad: 0,0,2) */
