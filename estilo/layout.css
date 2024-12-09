@@ -119,6 +119,7 @@ img {
   width: 30%;
   display: block;
   height: auto;
+  margin: auto;
 }
 
 /* (Especificidad: 0,0,1) */
