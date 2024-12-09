@@ -115,7 +115,7 @@ video {
 
 /* (Especificidad: 0,0,1) */
 img {
-  width: 30%;
+  width: 50%;
   display: block;
   height: auto;
   margin: auto;
@@ -252,11 +252,12 @@ svg {
     width: 100%;
     /*Redefinición para adaptar la navegación a telefonos*/
   }
-	
-/* (Especificidad: 0,0,1) */
-img {
-  width: 100%;
-   /*Redefinición para adaptar la visualización a telefonos*/
-}
+
+  /* (Especificidad: 0,0,1) */
+  img {
+    width: 100%;
+    /*Redefinición para adaptar la visualización a telefonos*/
+  }
 
 }
+
