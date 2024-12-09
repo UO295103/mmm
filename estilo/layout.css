@@ -255,7 +255,7 @@ svg {
 	
 /* (Especificidad: 0,0,1) */
 img {
-  width: 75%;
+  width: 90%;
    /*Redefinición para adaptar la visualización a telefonos*/
 }
 
