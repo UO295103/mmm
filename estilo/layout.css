@@ -252,5 +252,11 @@ svg {
     width: 100%;
     /*Redefinición para adaptar la navegación a telefonos*/
   }
+	
+/* (Especificidad: 0,0,1) */
+img {
+  width: 50%;
+   /*Redefinición para adaptar la visualización a telefonos*/
+}
 
 }
