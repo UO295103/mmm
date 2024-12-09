@@ -116,7 +116,7 @@ video {
 /* (Especificidad: 0,0,1) */
 img {
   padding-left: 15%;
-  width: 75%;
+  width: 30%;
   display: block;
   height: auto;
 }
